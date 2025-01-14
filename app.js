@@ -1,4 +1,3 @@
-
 const scene = new THREE.Scene();
 
 // Create the camera
@@ -85,6 +84,9 @@ const dropdown = document.getElementById("gpuDropdown");
 const loadingMenu = document.getElementById("loadingMenu");
 const loadingText = document.getElementById("loadingText");
 
+// Notification sound
+const notificationSound = new Audio("path/to/notification-sound.mp3");
+
 // Dropdown change listener
 dropdown.addEventListener("change", () => {
   if (dropdown.value !== "none") {
@@ -113,14 +115,20 @@ function startLoading() {
   }, 3000);
 }
 
-// Notification function
+// Notification function with sound
 function showNotification(title, body) {
   if (Notification.permission === "default") {
     Notification.requestPermission();
   }
 
   if (Notification.permission === "granted") {
-    new Notification(title, { body, icon: "logo.png" });
+    const notification = new Notification(title, {
+      body,
+      icon: "logo.png",
+    });
+
+    // Play notification sound
+    notificationSound.play();
   } else {
     console.warn("Notification permission not granted!");
   }
@@ -130,3 +138,10 @@ function showNotification(title, body) {
 document.getElementById("optimizeBtn").addEventListener("click", () => {
   showNotification("Optimizer Activated", "The optimizer has been successfully activated.");
 });
+
+// Handle notification permissions on page load for mobile devices
+if (Notification.permission === "default") {
+  Notification.requestPermission().catch((err) => {
+    console.warn("Notification permission request failed:", err);
+  });
+}
