@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Sphere with Buttons</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="background"></div>
+  <img src="logo.png" class="logo" alt="Logo">
+
+  <div id="dropdownContainer">
+    <label for="gpuDropdown" style="color: white; font-size: 18px;">GPU Overclock:</label>
+    <select id="gpuDropdown">
+      <option value="none">Select</option>
+      <option value="20%">20%</option>
+      <option value="60%">60%</option>
+      <option value="90%">90%</option>
+      <option value="100%">100%</option>
+    </select>
+  </div>
+
+  <div id="loadingMenu">
+    <span id="loadingText"></span>
+  </div>
+
+  <div class="button-container">
+    <button class="btn" id="optimizeBtn">Optimize 4X</button>
+    <a href="https://play.google.com/store/apps/details?id=com.dts.freefireth&hl=en">
+      <button class="btn" id="startFFBtn">Start FF!</button>
+    </a>
+    
+    <!-- Copyright Text -->
+    <div class="copyright">
+      <p>©Made by Tanvir</p>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/110/three.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
